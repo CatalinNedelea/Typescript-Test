@@ -3,6 +3,7 @@ import { User, SearchBar } from "components";
 import { getUsers } from "dataGenerator";
 import { useDebounce, usePrevious } from "hooks";
 import { User as UserType } from "types";
+import { Container, MainWrapper, SearchBarContainer } from "./Home.style";
 
 export function Home() {
   const [initialUsers, setInitialUsers] = useState(getUsers());
@@ -43,14 +44,18 @@ export function Home() {
   }, [debouncedSearch]);
 
   return (
-    <>
-      <SearchBar
-        value={searchInput}
-        onChange={(value: string) => setSearchInput(value)}
-      />
-      {users.map((user) => (
-        <User onClick={onClick} key={user.id} user={user} />
-      ))}
-    </>
+    <MainWrapper>
+      <SearchBarContainer>
+        <SearchBar
+          value={searchInput}
+          onChange={(value: string) => setSearchInput(value)}
+        />
+      </SearchBarContainer>
+      <Container>
+        {users.map((user) => (
+          <User onClick={onClick} key={user.id} user={user} />
+        ))}
+      </Container>
+    </MainWrapper>
   );
 }

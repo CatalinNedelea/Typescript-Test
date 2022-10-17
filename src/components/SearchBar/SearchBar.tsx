@@ -8,9 +8,8 @@ interface Props {
 export function SearchBar({ value, onChange }: Props) {
   return (
     <Container>
-      <Title>Search :</Title>
       <Input
-        placeholder="Name"
+        placeholder="Search User"
         value={value}
         name="name"
         id="name"
